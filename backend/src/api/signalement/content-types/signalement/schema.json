@@ -1,0 +1,74 @@
+{
+  "kind": "collectionType",
+  "collectionName": "signalements",
+  "info": {
+    "singularName": "signalement",
+    "pluralName": "signalements",
+    "displayName": "Signalement"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titre": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "categorie": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::categorie.categorie",
+      "inversedBy": "signalements"
+    },
+    "quartier": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::quartier.quartier",
+      "inversedBy": "signalements"
+    },
+    "latitude": {
+      "type": "decimal",
+      "required": true
+    },
+    "longitude": {
+      "type": "decimal"
+    },
+    "adresse": {
+      "type": "string"
+    },
+    "photos": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "statut": {
+      "type": "enumeration",
+      "enum": [
+        "en_attente",
+        "en_cours",
+        "resolu"
+      ],
+      "default": "en_attente"
+    },
+    "score_priorite": {
+      "type": "integer",
+      "default": 50
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "signalements"
+    }
+  }
+}

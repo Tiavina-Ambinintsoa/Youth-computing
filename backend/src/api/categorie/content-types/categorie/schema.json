@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "categories",
+  "info": {
+    "singularName": "categorie",
+    "pluralName": "categories",
+    "displayName": "Categorie"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nom": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "couleur": {
+      "type": "string"
+    },
+    "icone": {
+      "type": "string"
+    },
+    "signalements": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::signalement.signalement",
+      "mappedBy": "categorie"
+    }
+  }
+}

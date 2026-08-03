@@ -1,0 +1,101 @@
+@import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
+
+@font-face {
+  font-family: 'Goodly';
+  src: url('/fonts/goodly-regular.otf') format('opentype');
+}
+
+/* Custom theme extension (Tailwind v4 uses @theme) */
+@theme {
+  --color-primary-50: #ecfdf5;
+  --color-primary-100: #d1fae5;
+  --color-primary-200: #a7f3d0;
+  --color-primary-300: #6ee7b7;
+  --color-primary-400: #34d399;
+  --color-primary-500: #10b981;
+  --color-primary-600: #059669;
+  --color-primary-700: #047857;
+  --color-primary-800: #065f46;
+  --color-primary-900: #064e3b;
+
+  --font-family-sans: "Inter", system-ui, sans-serif;
+
+  --radius-card: 16px;
+}
+
+/* Base layer for CSS variables and dark mode */
+@layer base {
+  :root {
+    --background: 240 253 244;
+    --foreground: 2 6 23;
+    --card: 255 255 255;
+    --card-foreground: 2 6 23;
+    --border: 187 247 208;
+  }
+  .dark {
+    --background: 15 23 42;
+    --foreground: 248 250 252;
+    --card: 30 41 59;
+    --card-foreground: 248 250 252;
+    --border: 51 65 85;
+  }
+  body {
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
+  }
+}
+
+/* Custom utility classes */
+@layer components {
+  .card-hover {
+    transition: all 0.2s;
+  }
+  .card-hover:hover {
+    box-shadow:
+      0 10px 15px -3px rgb(0 0 0 / 0.1),
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
+    transform: translateY(-2px);
+  }
+  .badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  .badge-primary {
+    background-color: var(--color-primary-100);
+    color: var(--color-primary-800);
+  }
+  .dark .badge-primary {
+    background-color: color-mix(
+      in srgb,
+      var(--color-primary-500) 20%,
+      transparent
+    );
+    color: var(--color-primary-300);
+  }
+}
+
+/* Force dropdowns above Leaflet map */
+[data-radix-popper-content-wrapper] {
+  z-index: 9999 !important;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}

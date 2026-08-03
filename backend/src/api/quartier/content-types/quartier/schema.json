@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "quartiers",
+  "info": {
+    "singularName": "quartier",
+    "pluralName": "quartiers",
+    "displayName": "Quartier"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nom": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "population": {
+      "type": "integer"
+    },
+    "signalements": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::signalement.signalement",
+      "mappedBy": "quartier"
+    }
+  }
+}
