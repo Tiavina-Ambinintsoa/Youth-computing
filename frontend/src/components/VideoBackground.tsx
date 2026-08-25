@@ -5,7 +5,7 @@ interface VideoBackgroundProps {
   isLogin: boolean;
 }
 
-export default function VideoBackground({ isLogin }: VideoBackgroundProps) {
+export default function VideoBackground({}: VideoBackgroundProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {

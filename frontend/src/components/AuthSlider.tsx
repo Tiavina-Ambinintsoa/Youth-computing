@@ -4,14 +4,14 @@ import Login from "@/pages/auth/Login";
 import Register from "@/pages/auth/Register";
 
 export default function AuthSlider() {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin] = useState(true);
 
   return (
     <AnimatePresence mode="wait">
       {isLogin ? (
-        <Login key="login" onSwitch={() => setIsLogin(false)} />
+        <Login key="login" />
       ) : (
-        <Register key="register" onSwitch={() => setIsLogin(true)} />
+        <Register key="register" />
       )}
     </AnimatePresence>
   );

@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { Map, MapPin, Mail, Phone } from 'lucide-react';
+import { MapPin, Mail, Phone } from 'lucide-react';
 
 const navLinks = [
   { to: '/', label: 'Accueil' },
